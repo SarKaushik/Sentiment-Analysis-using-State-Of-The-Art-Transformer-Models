@@ -9,7 +9,7 @@ Sentiment analysis using transformer models is all about teaching machines to un
 
 ## Installing dependancies`
 
-`
+```
 import locale
 locale.getpreferredencoding = lambda: "UTF-8"
 
@@ -24,12 +24,12 @@ import pandas as pd
 
 pd.set_option('display.max_colwidth', None)
 
-`
+````
 
 
 Sample Review data from Customers,
 
-`
+```
 sample_reviews = [
     "The FreshBlend juicer is a complete letdown. It barely extracts juice and leaves so much pulp behind. I’m really disappointed and returning it soon.",
     "The QuickGrow soil enhancer worked wonders in my garden! After using it for just two weeks, my flowers are blooming like never before. Highly recommend it to fellow gardeners.",
@@ -38,40 +38,37 @@ sample_reviews = [
 ]
 
 
-
-`
+```
 
 
 ##Converted into dataframe using Python Pandas library
-`
+```
 sample_review_df = pd.DataFrame(sample_reviews, columns=['review'])
 sample_review_df
-`
-
+```
 
 ##Loading sentiment analysis transformenr model
 
-`
+```
 sentiment_model = pipeline('sentiment-analysis', device=0)
 
 
-`
+```
 
 ## Perform sentiment analysis for collected reviews
-`
+```
 reviews = sample_review_df['review'].values
 reviews
 
 sentiment_model(reviews[0])
-
-`
+```
 
 ##Output
 [{'label': 'NEGATIVE', 'score': 0.9995445609092712}]
 
 ##Review sentiments of all the collected customer feedbacks
 
-`
+```
 sentiments = []
 
 for review in reviews:
@@ -79,7 +76,7 @@ for review in reviews:
 
 sentiments
 
-`
+```
 
 
 ## Output 
@@ -94,38 +91,38 @@ An emotion detector using transformer models is designed to identify specific em
 
 
 ##Load emotion detector trasnformer model
-`
+```
 emotion_model = pipeline('sentiment-analysis',
                          model='SamLowe/roberta-base-go_emotions',
                          device=0)
 
-`
+```
 
 
-`
+```
 sample_review_df['emotion'] = emotions
 sample_review_df
 
-`
+```
 
-`
+```
 emotions = []
 
 for review in reviews:
   emotions.append(emotion_model(review)[0]['label'])
 
 emotions
-`
+```
 
 
 
 ##Plotting some basic visuals
 
-`
+```
 sample_review_df['sentiment'].value_counts().plot(kind='bar');
 sample_review_df['emotion'].value_counts().plot(kind='bar');
 
-`
+```
 
 
 
@@ -138,15 +135,15 @@ sample_review_df['emotion'].value_counts().plot(kind='bar');
  
 ## Load QA Transformer Model
 
-`
+```
 table_qa = pipeline('table-question-answering',
                     model='neulab/omnitab-large-finetuned-wtq',
                     device=0)
-`
+```
 
 
 ## Sample data set
-`data = {
+```data = {
     "Year": [2020, 2016, 2012, 2008, 2004, 2000, 1996, 1992, 1988, 1984],
     "Host City": ["Tokyo", "Rio de Janeiro", "London", "Beijing", "Athens", "Sydney", "Atlanta", "Barcelona", "Seoul", "Los Angeles"],
     "Host Country": ["Japan", "Brazil", "United Kingdom", "China", "Greece", "Australia", "USA", "Spain", "South Korea", "USA"],
@@ -160,11 +157,11 @@ table_qa = pipeline('table-question-answering',
 # Creating the dataframe
 table = pd.DataFrame(data)
 table
-`
+```
 
 
 ##Define questions list
-`questions = [
+```questions = [
     "Which country won the most medals in the table for olympics?",
     "Leading country with the most medals in olympics 1988?",
     "What is the max value for Participating Nations in the olympics?",
@@ -173,11 +170,11 @@ table
     "Host country who hosted the most number of olympic games?",
     "How many olympic games were hosted by USA?"
 ]
-`
+```
 
 ## Calling QA transformer model function
 
-`
+```
 idx =[]
 solutions = []
 for index,qa in enumerate(questions):
@@ -186,7 +183,7 @@ for index,qa in enumerate(questions):
     print(qa, solution['answer'])
     #solution = idx[index]
     #print(f"Solution: {idx[index]}, Question: {qa}")
-`
+```
 
 
 ##Output
