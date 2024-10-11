@@ -22,7 +22,7 @@ I leverage AWS services to conduct sentiment analysis on customer reviews using 
 <img width="1440" alt="EC2 Instance" src="https://github.com/user-attachments/assets/cac3c8cd-c7a4-474d-b764-578e4abbbe7a">
 
 
-##Indetify Customer file in S3
+##Indentify Customer file in S3
 <img width="1240" alt="Screenshot 2024-10-06 at 3 57 13 PM" src="https://github.com/user-attachments/assets/546efd1e-9343-4bae-bc95-fc19976401b4">
 
 
