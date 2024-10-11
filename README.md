@@ -4,6 +4,7 @@ I leverage AWS services to conduct sentiment analysis on customer reviews using 
 
 ##AWS Architecture
 
+![image](https://github.com/user-attachments/assets/ee91013d-abd9-4e4b-bb7f-a1a606c63d06)
 
 
 
