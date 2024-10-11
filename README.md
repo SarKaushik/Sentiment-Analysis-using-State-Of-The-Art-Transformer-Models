@@ -1,3 +1,72 @@
+I leverage AWS services to conduct sentiment analysis on customer reviews using transformer models. Customer reviews are stored in an Amazon S3 bucket, and the heavy computational tasks are executed on a GPU-enabled Amazon EC2 instance. The EC2 instance runs advanced transformer models like BERT and RoBERTa to analyze the sentiment in the feedback. This architecture ensures efficient and scalable processing of large datasets, optimizing performance with AWS’s cloud infrastructure.
+
+
+
+##AWS Architecture
+
+
+
+
+
+
+## Provisioning EC2 Instance
+
+<img width="1440" alt="EC2 Instance" src="https://github.com/user-attachments/assets/310fad44-54f3-4013-ac8c-23855288c8c8">
+
+
+
+
+## Provisioning S3 Bucket
+
+<img width="1440" alt="EC2 Instance" src="https://github.com/user-attachments/assets/cac3c8cd-c7a4-474d-b764-578e4abbbe7a">
+
+
+##Indetify Customer file in S3
+<img width="1240" alt="Screenshot 2024-10-06 at 3 57 13 PM" src="https://github.com/user-attachments/assets/546efd1e-9343-4bae-bc95-fc19976401b4">
+
+
+#Using nano to create python script to build logic for data conversion in Python data frame
+
+
+```
+nano load_reviews.py
+
+
+import boto3
+import pandas as pd
+import io
+
+# Define S3 bucket and file details
+bucket_name = 'customerreview'
+file_key = 'customerreview/customer_reviews.xlsx'
+
+# Initialize S3 client
+s3 = boto3.client('s3')
+
+# Get the Excel file from S3
+response = s3.get_object(Bucket=bucket_name, Key=file_key)
+
+# Read the Excel content into a pandas DataFrame
+file_content = response['Body'].read()
+excel_data = pd.read_excel(io.BytesIO(file_content))
+
+# Display the DataFrame
+print(excel_data.head())
+
+```
+
+
+##Run the script in cloudshell
+'''
+python3 load_reviews.py
+'''
+
+
+
+
+
+
+
 # Sentiment-Analysis-using-Transformer-LLM-s
 Using sentiment analysis model to perform sentiment analysis on customer reviews for Manufacturing Industry.
 
